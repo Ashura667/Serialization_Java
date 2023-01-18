@@ -8,6 +8,30 @@ public class ImageModèle implements Serializable {
 	public String chemin;
 	public int note;
 
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getChemin() {
+		return chemin;
+	}
+
+	public void setChemin(String chemin) {
+		this.chemin = chemin;
+	}
+
+	public int getNote() {
+		return note;
+	}
+
+	public void setNote(int note) {
+		this.note = note;
+	}
+
 	public ImageModèle() {}
 		
 	public ImageModèle(String id, String p, int r) {

@@ -1,5 +1,9 @@
 package mvc;
 
+import java.beans.XMLDecoder;
+import java.beans.XMLEncoder;
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -18,12 +22,12 @@ public class Modèle extends Observable {
 
 	public Modèle() {
 		String dir;
-		try (FileInputStream fis = new FileInputStream("images.dat");
-			    ObjectInputStream ois = new ObjectInputStream(fis);) {
 
-			  this.images = (ArrayList) ois.readObject();
+		try (XMLDecoder decoder=new XMLDecoder(new BufferedInputStream(new FileInputStream("images.xml")))) {
+
+			  this.images = (ArrayList) decoder.readObject();
 			 
-			} catch (IOException  | ClassNotFoundException c) {
+			} catch (IOException c) {
 			  dir = "images";
 			  System.out.println("coucou");
 			  File repImages = new File(dir);
@@ -51,11 +55,10 @@ public class Modèle extends Observable {
 	}
 	public void enregistrer() {
 		try {
-			FileOutputStream a = new FileOutputStream("images.dat");
-			ObjectOutputStream b = new ObjectOutputStream(a);
-			b.writeObject(this.images);
-			b.close();
-			a.close();
+	        XMLEncoder encoder = new XMLEncoder(new FileOutputStream("images.xml"));
+			
+			encoder.writeObject(this.images);
+			encoder.close();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -66,6 +69,22 @@ public class Modèle extends Observable {
 		
 		
 		
+	}
+
+	public ArrayList<ImageModèle> getImages() {
+		return images;
+	}
+
+	public void setImages(ArrayList<ImageModèle> images) {
+		this.images = images;
+	}
+
+	public int getIndexImageSelectionnée() {
+		return indexImageSelectionnée;
+	}
+
+	public void setIndexImageSelectionnée(int indexImageSelectionnée) {
+		this.indexImageSelectionnée = indexImageSelectionnée;
 	}
 
 }
