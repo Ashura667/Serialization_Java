@@ -17,7 +17,7 @@ public class GestionImages extends Frame implements WindowListener {
 
 	public GestionImages() {
 
-		Modèle modl = new Modèle("images/");
+		Modèle modl = new Modèle();
 		Controleur ctrl = new Controleur(modl);
 		
 		this.setLayout(new BorderLayout());
@@ -42,6 +42,7 @@ public class GestionImages extends Frame implements WindowListener {
 
 	@Override
 	public void windowClosing(WindowEvent e) { 
+		new Modèle().enregistrer();
 		System.exit(0); 
 	}
 

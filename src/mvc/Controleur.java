@@ -1,10 +1,10 @@
 package mvc;
 
 import java.awt.event.ItemEvent;
+
 import java.awt.event.ItemListener;
 import java.util.Arrays;
 
-import gestion_images.AWT_RatingImage;
 
 public class Controleur implements ItemListener {
 	

@@ -1,6 +1,8 @@
 package mvc;
 
-public class ImageModèle {
+import java.io.Serializable;
+
+public class ImageModèle implements Serializable {
 
 	public String id;
 	public String chemin;
